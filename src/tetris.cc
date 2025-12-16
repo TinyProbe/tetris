@@ -7,26 +7,26 @@
 namespace ttrs {
 
 void gotoxy(int x, int y) {
-  COORD p = { (short)x, (short)y };
-  SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), p);
+    COORD p = { (short)x, (short)y };
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), p);
 }
 
 void show_console_cursor(bool showFlag) {
-  HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
-  CONSOLE_CURSOR_INFO cursorInfo;
-  GetConsoleCursorInfo(out, &cursorInfo);
-  cursorInfo.bVisible = showFlag;
-  SetConsoleCursorInfo(out, &cursorInfo);
+    HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_CURSOR_INFO cursorInfo;
+    GetConsoleCursorInfo(out, &cursorInfo);
+    cursorInfo.bVisible = showFlag;
+    SetConsoleCursorInfo(out, &cursorInfo);
 }
 
 int __random(int min, int max) {
-  static std::mt19937 gen((std::random_device())());
-  return (std::uniform_int_distribution<int>(min, max))(gen);
+    static std::mt19937 gen((std::random_device())());
+    return (std::uniform_int_distribution<int>(min, max))(gen);
 }
 
 void debug_msg(int x, int y, std::string const &msg) {
-  gotoxy(x, y);
-  std::cout << msg << std::flush;
+    gotoxy(x, y);
+    std::cout << msg << std::flush;
 }
 
 std::size_t const g_kRow = 0;
@@ -67,154 +67,154 @@ std::string const g_kSelector_button_right = ">";
 std::string const g_kSelector_setting_left = "-";
 std::string const g_kSelector_setting_right = "+";
 std::vector<std::vector<int>> const g_kCoordinates_corrections = {
-  {  0,      1 },
-  { -1 * 2,  0 },
-  {  1 * 2,  0 },
-  {  0,     -1 },
+    {  0,      1 },
+    { -1 * 2,  0 },
+    {  1 * 2,  0 },
+    {  0,     -1 },
 
-  { -1 * 2,  1 },
-  {  1 * 2,  1 },
-  { -1 * 2, -1 },
-  {  1 * 2, -1 },
+    { -1 * 2,  1 },
+    {  1 * 2,  1 },
+    { -1 * 2, -1 },
+    {  1 * 2, -1 },
 
-  {  0,      2 },
-  { -2 * 2,  0 },
-  {  2 * 2,  0 },
-  {  0,     -2 },
+    {  0,      2 },
+    { -2 * 2,  0 },
+    {  2 * 2,  0 },
+    {  0,     -2 },
 };
 std::vector<std::string> const g_kColors = {
-  "  ", "🟥", "🟧", "🟨",
-  "🟩", "🟦", "🟪", "🟫",
-  "🔳", "🔲", "🔄", "🔼", "🔽",
+    "  ", "🟥", "🟧", "🟨",
+    "🟩", "🟦", "🟪", "🟫",
+    "🔳", "🔲", "🔄", "🔼", "🔽",
 };
 std::vector<std::vector<Texture>> const g_kTextures = {
-  { // red_Z
-    {
-      { Color::red, Color::red, Color::empty, },
-      { Color::empty, Color::red, Color::red, },
-      { Color::empty, Color::empty, Color::empty, },
-    }, {
-      { Color::empty, Color::empty, Color::red, },
-      { Color::empty, Color::red, Color::red, },
-      { Color::empty, Color::red, Color::empty, },
-    }, {
-      { Color::empty, Color::empty, Color::empty, },
-      { Color::red, Color::red, Color::empty, },
-      { Color::empty, Color::red, Color::red, },
-    }, {
-      { Color::empty, Color::red, Color::empty, },
-      { Color::red, Color::red, Color::empty, },
-      { Color::red, Color::empty, Color::empty, },
+    { // red_Z
+        {
+            { Color::red, Color::red, Color::empty, },
+            { Color::empty, Color::red, Color::red, },
+            { Color::empty, Color::empty, Color::empty, },
+        }, {
+            { Color::empty, Color::empty, Color::red, },
+            { Color::empty, Color::red, Color::red, },
+            { Color::empty, Color::red, Color::empty, },
+        }, {
+            { Color::empty, Color::empty, Color::empty, },
+            { Color::red, Color::red, Color::empty, },
+            { Color::empty, Color::red, Color::red, },
+        }, {
+            { Color::empty, Color::red, Color::empty, },
+            { Color::red, Color::red, Color::empty, },
+            { Color::red, Color::empty, Color::empty, },
+        },
+    }, { // orange_L
+        {
+            { Color::empty, Color::empty, Color::orange, },
+            { Color::orange, Color::orange, Color::orange, },
+            { Color::empty, Color::empty, Color::empty, },
+        }, {
+            { Color::empty, Color::orange, Color::empty, },
+            { Color::empty, Color::orange, Color::empty, },
+            { Color::empty, Color::orange, Color::orange, },
+        }, {
+            { Color::empty, Color::empty, Color::empty, },
+            { Color::orange, Color::orange, Color::orange, },
+            { Color::orange, Color::empty, Color::empty, },
+        }, {
+            { Color::orange, Color::orange, Color::empty, },
+            { Color::empty, Color::orange, Color::empty, },
+            { Color::empty, Color::orange, Color::empty, },
+        },
+    }, { // yellow_O
+        {
+            { Color::yellow, Color::yellow, },
+            { Color::yellow, Color::yellow, },
+        }, {
+            { Color::yellow, Color::yellow, },
+            { Color::yellow, Color::yellow, },
+        }, {
+            { Color::yellow, Color::yellow, },
+            { Color::yellow, Color::yellow, },
+        }, {
+            { Color::yellow, Color::yellow, },
+            { Color::yellow, Color::yellow, },
+        },
+    }, { // green_S
+        {
+            { Color::empty, Color::green, Color::green, },
+            { Color::green, Color::green, Color::empty, },
+            { Color::empty, Color::empty, Color::empty, },
+        }, {
+            { Color::empty, Color::green, Color::empty, },
+            { Color::empty, Color::green, Color::green, },
+            { Color::empty, Color::empty, Color::green, },
+        }, {
+            { Color::empty, Color::empty, Color::empty, },
+            { Color::empty, Color::green, Color::green, },
+            { Color::green, Color::green, Color::empty, },
+        }, {
+            { Color::green, Color::empty, Color::empty, },
+            { Color::green, Color::green, Color::empty, },
+            { Color::empty, Color::green, Color::empty, },
+        },
+    }, { // blue_J
+        {
+            { Color::blue, Color::empty, Color::empty, },
+            { Color::blue, Color::blue, Color::blue, },
+            { Color::empty, Color::empty, Color::empty, },
+        }, {
+            { Color::empty, Color::blue, Color::blue, },
+            { Color::empty, Color::blue, Color::empty, },
+            { Color::empty, Color::blue, Color::empty, },
+        }, {
+            { Color::empty, Color::empty, Color::empty, },
+            { Color::blue, Color::blue, Color::blue, },
+            { Color::empty, Color::empty, Color::blue, },
+        }, {
+            { Color::empty, Color::blue, Color::empty, },
+            { Color::empty, Color::blue, Color::empty, },
+            { Color::blue, Color::blue, Color::empty, },
+        },
+    }, { // purple_T
+        {
+            { Color::empty, Color::purple, Color::empty, },
+            { Color::purple, Color::purple, Color::purple, },
+            { Color::empty, Color::empty, Color::empty, },
+        }, {
+            { Color::empty, Color::purple, Color::empty, },
+            { Color::empty, Color::purple, Color::purple, },
+            { Color::empty, Color::purple, Color::empty, },
+        }, {
+            { Color::empty, Color::empty, Color::empty, },
+            { Color::purple, Color::purple, Color::purple, },
+            { Color::empty, Color::purple, Color::empty, },
+        }, {
+            { Color::empty, Color::purple, Color::empty, },
+            { Color::purple, Color::purple, Color::empty, },
+            { Color::empty, Color::purple, Color::empty, },
+        },
+    }, { // brown_I
+        {
+            { Color::empty, Color::empty, Color::empty, Color::empty, },
+            { Color::brown, Color::brown, Color::brown, Color::brown, },
+            { Color::empty, Color::empty, Color::empty, Color::empty, },
+            { Color::empty, Color::empty, Color::empty, Color::empty, },
+        }, {
+            { Color::empty, Color::empty, Color::brown, Color::empty, },
+            { Color::empty, Color::empty, Color::brown, Color::empty, },
+            { Color::empty, Color::empty, Color::brown, Color::empty, },
+            { Color::empty, Color::empty, Color::brown, Color::empty, },
+        }, {
+            { Color::empty, Color::empty, Color::empty, Color::empty, },
+            { Color::empty, Color::empty, Color::empty, Color::empty, },
+            { Color::brown, Color::brown, Color::brown, Color::brown, },
+            { Color::empty, Color::empty, Color::empty, Color::empty, },
+        }, {
+            { Color::empty, Color::brown, Color::empty, Color::empty, },
+            { Color::empty, Color::brown, Color::empty, Color::empty, },
+            { Color::empty, Color::brown, Color::empty, Color::empty, },
+            { Color::empty, Color::brown, Color::empty, Color::empty, },
+        },
     },
-  }, { // orange_L
-    {
-      { Color::empty, Color::empty, Color::orange, },
-      { Color::orange, Color::orange, Color::orange, },
-      { Color::empty, Color::empty, Color::empty, },
-    }, {
-      { Color::empty, Color::orange, Color::empty, },
-      { Color::empty, Color::orange, Color::empty, },
-      { Color::empty, Color::orange, Color::orange, },
-    }, {
-      { Color::empty, Color::empty, Color::empty, },
-      { Color::orange, Color::orange, Color::orange, },
-      { Color::orange, Color::empty, Color::empty, },
-    }, {
-      { Color::orange, Color::orange, Color::empty, },
-      { Color::empty, Color::orange, Color::empty, },
-      { Color::empty, Color::orange, Color::empty, },
-    },
-  }, { // yellow_O
-    {
-      { Color::yellow, Color::yellow, },
-      { Color::yellow, Color::yellow, },
-    }, {
-      { Color::yellow, Color::yellow, },
-      { Color::yellow, Color::yellow, },
-    }, {
-      { Color::yellow, Color::yellow, },
-      { Color::yellow, Color::yellow, },
-    }, {
-      { Color::yellow, Color::yellow, },
-      { Color::yellow, Color::yellow, },
-    },
-  }, { // green_S
-    {
-      { Color::empty, Color::green, Color::green, },
-      { Color::green, Color::green, Color::empty, },
-      { Color::empty, Color::empty, Color::empty, },
-    }, {
-      { Color::empty, Color::green, Color::empty, },
-      { Color::empty, Color::green, Color::green, },
-      { Color::empty, Color::empty, Color::green, },
-    }, {
-      { Color::empty, Color::empty, Color::empty, },
-      { Color::empty, Color::green, Color::green, },
-      { Color::green, Color::green, Color::empty, },
-    }, {
-      { Color::green, Color::empty, Color::empty, },
-      { Color::green, Color::green, Color::empty, },
-      { Color::empty, Color::green, Color::empty, },
-    },
-  }, { // blue_J
-    {
-      { Color::blue, Color::empty, Color::empty, },
-      { Color::blue, Color::blue, Color::blue, },
-      { Color::empty, Color::empty, Color::empty, },
-    }, {
-      { Color::empty, Color::blue, Color::blue, },
-      { Color::empty, Color::blue, Color::empty, },
-      { Color::empty, Color::blue, Color::empty, },
-    }, {
-      { Color::empty, Color::empty, Color::empty, },
-      { Color::blue, Color::blue, Color::blue, },
-      { Color::empty, Color::empty, Color::blue, },
-    }, {
-      { Color::empty, Color::blue, Color::empty, },
-      { Color::empty, Color::blue, Color::empty, },
-      { Color::blue, Color::blue, Color::empty, },
-    },
-  }, { // purple_T
-    {
-      { Color::empty, Color::purple, Color::empty, },
-      { Color::purple, Color::purple, Color::purple, },
-      { Color::empty, Color::empty, Color::empty, },
-    }, {
-      { Color::empty, Color::purple, Color::empty, },
-      { Color::empty, Color::purple, Color::purple, },
-      { Color::empty, Color::purple, Color::empty, },
-    }, {
-      { Color::empty, Color::empty, Color::empty, },
-      { Color::purple, Color::purple, Color::purple, },
-      { Color::empty, Color::purple, Color::empty, },
-    }, {
-      { Color::empty, Color::purple, Color::empty, },
-      { Color::purple, Color::purple, Color::empty, },
-      { Color::empty, Color::purple, Color::empty, },
-    },
-  }, { // brown_I
-    {
-      { Color::empty, Color::empty, Color::empty, Color::empty, },
-      { Color::brown, Color::brown, Color::brown, Color::brown, },
-      { Color::empty, Color::empty, Color::empty, Color::empty, },
-      { Color::empty, Color::empty, Color::empty, Color::empty, },
-    }, {
-      { Color::empty, Color::empty, Color::brown, Color::empty, },
-      { Color::empty, Color::empty, Color::brown, Color::empty, },
-      { Color::empty, Color::empty, Color::brown, Color::empty, },
-      { Color::empty, Color::empty, Color::brown, Color::empty, },
-    }, {
-      { Color::empty, Color::empty, Color::empty, Color::empty, },
-      { Color::empty, Color::empty, Color::empty, Color::empty, },
-      { Color::brown, Color::brown, Color::brown, Color::brown, },
-      { Color::empty, Color::empty, Color::empty, Color::empty, },
-    }, {
-      { Color::empty, Color::brown, Color::empty, Color::empty, },
-      { Color::empty, Color::brown, Color::empty, Color::empty, },
-      { Color::empty, Color::brown, Color::empty, Color::empty, },
-      { Color::empty, Color::brown, Color::empty, Color::empty, },
-    },
-  },
 };
 
 } // namespace ttrs
