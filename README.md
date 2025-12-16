@@ -7,31 +7,20 @@ C++20 표준과 객체 지향 프로그래밍(OOP)을 활용하여 개발된 터
 
 ## 💻 Screenshot
 
-프로젝트 실행 화면입니다.
-
-[Image](./res/git/screenshot1.png)
+[image](./res/git/screenshot1.png)
 
 ## ✨ Features & Tech Stack
 
 - 객체 지향 설계: 테트리스 블록(Tetromino), 보드(Board), 게임 로직 등 핵심 요소를 C++ 클래스로 구현하여 모듈화와 재사용성을 높였습니다.
 
-- C++20 표준: 최신 C++ 기능을 활용하여 코드를 작성했습니다.
+- C++20 표준: 최신 C++ 를 활용하여 코드를 작성했습니다.
 
-- 빌드 유연성: 사용자의 필요에 따라 최적화 플래그(-O2, -g2 등)를 쉽게 변경할 수 있습니다.
+- 빌드 유연성: 필요에 따라 최적화 플래그(-O2, -g2 등)를 변경할 수 있습니다.
 
 ## 🚀 Build & Run
 
 ⚠️ 중요: 이 프로젝트는 Windows 운영 체제 환경에서만 빌드 및 실행이 가능하도록
 구성되었습니다.
-
-#### 1. 빌드 (Build)
-
-프로젝트 루트 디렉터리에서 make 명령어를 사용하여 빌드합니다.
-
-```bash
-# 기본 빌드
-make all
-```
 
 #### 최적화 플래그 변경 (Optimization Flag)
 
@@ -42,6 +31,15 @@ Makefile 내에서 빌드 시 적용할 최적화 플래그를 자유롭게 변�
 FLAGS=-std=c++20 -g2 -Wall -Wextra -Werror -o $(TARGET)
 # 상용 릴리즈 예시 (최적화)
 FLAGS=-std=c++20 -O2 -Wall -Wextra -Werror -o $(TARGET)
+```
+
+#### 1. 빌드 (Build)
+
+프로젝트 루트 디렉터리에서 make 명령어를 사용하여 빌드합니다.
+
+```bash
+# 기본 빌드
+make all
 ```
 
 #### 2. 실행 (Execution)
