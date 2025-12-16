@@ -7,7 +7,7 @@ C++20 표준과 객체 지향 프로그래밍(OOP)을 활용하여 개발된 터
 
 ## 💻 Screenshot
 
-[image](./res/git/screenshot1.png)
+![Image](./res/git/screenshot1.png)
 
 ## ✨ Features & Tech Stack
 
