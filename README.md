@@ -69,6 +69,7 @@ make all
 | **→ (방향키 우)** | 블록 오른쪽 이동 (Move Right) |
 | **↓ (방향키 하)** | 블록 아래로 이동 (Move Down) |
 | **Space Bar / Enter** | 블록 즉시 하강 (Hard Drop) |
+| **Tab** | 블록 교환 (Swap) |
 | **Esc** | 일시 정지 메뉴 호출 (Pause Menu) |
 
 ## 📄 라이선스 (License)
